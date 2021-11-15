@@ -3,8 +3,23 @@
     <%- include('partials/navbar.ejs') %> 
     <br>
     <div class="container">
-        <h1><%= pergunta.titulo %></h1> 
-        <p><%= pergunta.descricao %></p>
+        <div class="pergunta">
+            <h1><%= pergunta.titulo %></h1> 
+            <p><%= pergunta.descricao %></p>
+        </div>
+        <hr>
+        <div class="resposta">
+            <h3>Responda</h3>
+            <!-- action serve para apontar para a rota -->
+            <form method="post" action="/responder">
+                <label for="">Resposta</label>
+                <textarea name="corpo" rows="3" placeholder="Digite a sua resposta" class="form-control"></textarea>
+                <br>
+                <!-- hidden não é exibido para o usuario -->
+                <input type="hidden" name="pergunta_id" value="<%= pergunta.id %>">
+                <button type="submit" class="btn btn-primary">Responder</button>
+            </form>
+        </div>
     </div>
 </body>
 <%- include('partials/footer.ejs') %>

@@ -4,9 +4,11 @@ const port = 8080;
 
 //importar o model pergunta (criação da tabela)
 const pergunta = require('./database/Pergunta');
+//importar o model resposta (criação da tabela)
+const resposta = require('./database/Resposta');
 
 //importando a conexao
-const conexao = require('./database/database.js')
+const conexao = require('./database/database.js');
 // authenticate serve para conectar
 //then serve para quando for conectado com sucesso
 conexao.authenticate().then(() => {
@@ -75,6 +77,17 @@ app.get('/pergunta/:id', (req, res) => {
         }
     });
 })
+
+app.post('/responder', (req, res) => {
+    var pergunta_id = req.body.pergunta_id;
+    var corpo = req.body.corpo;
+    resposta.create({
+        pergunta_id: pergunta_id,
+        corpo: corpo
+    }).then(() => {
+        res.redirect('/pergunta/'+pergunta_id)
+    });
+});
 
 //criar servidor
 app.listen(port, () => {
