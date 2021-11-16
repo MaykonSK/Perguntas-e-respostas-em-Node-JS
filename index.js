@@ -34,8 +34,9 @@ app.get('/', (req, res) => {
     ]}).then(perguntas => {
         //console.log(perguntas);
         res.render("index", {
-            perguntas: perguntas
+            perguntas: perguntas, 
         });
+
     })
 
 })

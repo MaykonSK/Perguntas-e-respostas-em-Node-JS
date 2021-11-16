@@ -4,6 +4,11 @@
     <br>
     <div class="container">
         <div class="pergunta">
+            <% data = new Date(pergunta.createdAt); %>
+                <% dataFormatada = data.toLocaleDateString('pt-BR', {timeZone: 'UTC'}); %>
+                <% hora = data.getHours(); %>
+                <% minuto = data.getMinutes(); %>
+                <p><%= dataFormatada %> <%= hora %>:<%= minuto %></p>
             <h1><%= pergunta.titulo %></h1> 
             <p><%= pergunta.descricao %></p>
         </div>
@@ -23,6 +28,11 @@
             <h3>Respostas</h3>
             <% resposta.forEach(resposta => { %>
                 <br>
+                <% data = new Date(resposta.createdAt); %>
+                <% dataFormatada = data.toLocaleDateString('pt-BR', {timeZone: 'UTC'}); %>
+                <% hora = data.getHours(); %>
+                <% minuto = data.getMinutes(); %>
+                <p><%= dataFormatada %> <%= hora %>:<%= minuto %></p>
                 <div class="card">
                     <div class="card-bady">
                         <p><%= resposta.corpo %></p>
