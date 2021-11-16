@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 8080;
+const port = 80;
 
 //importar o model pergunta (criação da tabela)
 const pergunta = require('./database/Pergunta');
